@@ -14,10 +14,14 @@
 
         th {
             text-align: center;
+            padding: 3px;
         }
 
         td {
             padding: 5px;
+        }
+        td:nth-child(6) {
+            text-align: right;
         }
         body {
             font-family:
@@ -28,29 +32,6 @@
 <body>
     <h1>VertexAI Managed Notebooks</h1>
     <table>
-        <tr><h2>Machine Configurations</h2></tr>
-        <tr><table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>vCPUs</th>
-                    <th>Memory</th>
-                    <th>GPUs</th>
-                    <th>Cost per hour</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in rows if row['gpus'] == None %}
-                    <tr>
-                        <td>{{ row[0] }}</td>
-                        <td>{{ row[1] }}</td>
-                        <td>{{ row[2] }}</td>
-                        <td>{{ row[3] }}</td>
-                        <td>{{ row[4] }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-            </table></tr>
         <tr><h2>GPU Machine Configurations</h2></tr>
         <tr><table class="table">
             <thead>
@@ -59,29 +40,85 @@
                     <th>vCPUs</th>
                     <th>Memory</th>
                     <th>GPUs</th>
+                    <th>GPU Type</th>
                     <th>Cost per hour</th>
                 </tr>
             </thead>
             <tbody>
-                {% for row in rows if row['gpus'] != None %}
+                {% for row in gpu_rows %}
                     <tr>
                         <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
                         <td>{{ row[2] }}</td>
                         <td>{{ row[3] }}</td>
                         <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table></tr>
+        <tr><h2>Machine Configurations</h2></tr>
+        <tr><table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>vCPUs</th>
+                    <th>Memory</th>
+                    <th>GPUs</th>
+                    <th>GPU Type</th>
+                    <th>Cost per hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in no_gpu_rows %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table></tr>
     </table>
     <br>
-    <select name="machine_type">
+    <select name="machine_type" id="machine_type">
         {% for machine_type in machine_types %}
             <option value="{{ machine_type.name }}">{{ machine_type.name }}</option>
         {% endfor %}
+        <script>
+            document.getElementById("machine_type").selectedIndex = 0;
+        </script>
     </select>
     <br>
     <button type="submit" name="submit" value="Submit" style="float: inline-end;">Submit</button>
+    <br>
+    <div id="selection_row">
+        <h2>Selected Row</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>vCPUs</th>
+                    <th>Memory</th>
+                    <th>GPUs</th>
+                    <th>GPU Type</th>
+                    <th>Cost per hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ selected_row.name }}</td>
+                    <td>{{ selected_row.vcpus }}</td>
+                    <td>{{ selected_row.memory }}</td>
+                    <td>{{ selected_row.gpus }}</td>
+                    <td>{{ selected_row.gpu_type }}</td>
+                    <td>{{ selected_row.cost_per_hour }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
