@@ -7,7 +7,6 @@
             border-collapse: collapse;
             border-spacing: 5px;
         }
-
         th, td {
             border: 1px solid black;
         }
@@ -83,18 +82,18 @@
             </tbody>
         </table></tr>
     </table>
-    <br>
-    <select name="machine_type" id="machine_type">
-        {% for machine_type in machine_types %}
-            <option value="{{ machine_type.name }}">{{ machine_type.name }}</option>
-        {% endfor %}
-        <script>
-            document.getElementById("machine_type").selectedIndex = 0;
-        </script>
-    </select>
-    <br>
-    <button type="submit" name="submit" value="Submit" style="float: inline-end;">Submit</button>
-    <br>
+        <br>
+        <select name="machine_type" id="machine_type">
+            {% for machine_type in machine_types %}
+                <option value="{{ machine_type.name }}">{{ machine_type.name }}</option>
+            {% endfor %}
+            <script>
+                document.getElementById("machine_type").selectedIndex = 0;
+            </script>
+        </select>
+        <br>
+        <button type="submit" name="submit" value="Submit" style="float: inline-end;">Submit</button>
+        <br>
     <div id="selection_row">
         <h2>Selected Row</h2>
         <table>
