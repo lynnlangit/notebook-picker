@@ -73,6 +73,16 @@ machine_configurations = [
     },
 ]
 
+def get_machine_configurations(with_gpus=False):
+    if with_gpus:
+        return [
+            machine_configuration
+            for machine_configuration in machine_configurations
+            if machine_configuration["gpus"] is not None
+        ]
+    else:
+        return machine_configurations
+
 @app.route("/")
 def index():
     rows = []
