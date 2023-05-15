@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selected Machine Configuration</title>
+</head>
+<body>
+    <h1>Selected Machine Configuration</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ machine_configuration.name }}</td>
+            </tr>
+            <tr>
+                <th>vCPUs</th>
+                <td>{{ machine_configuration.vcpus }}</td>
+            </tr>
+            <tr>
+                <th>Memory</th>
+                <td>{{ machine_configuration.memory }}</td>
+            </tr>
+            <tr>
+                <th>GPUs</th>
+                <td>{{ machine_configuration.gpus }}</td>
+            </tr>
+            <tr>
+                <th>Cost per hour</th>
+                <td>{{ machine_configuration.cost_per_hour }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

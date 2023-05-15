@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GCP Machine Configurations</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 5px;
+        }
+
+        th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            padding: 5px;
+        }
+        body {
+            font-family:
+             Arial, Helvetica, sans-serif;
+            }
+    </style>
+</head>
+<body>
+    <h1>VertexAI Managed Notebooks</h1>
+    <table>
+        <tr><h2>Machine Configurations</h2></tr>
+        <tr><table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>vCPUs</th>
+                    <th>Memory</th>
+                    <th>GPUs</th>
+                    <th>Cost per hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table></tr>
+        <tr><h2>GPU Machine Configurations</h2></tr>
+        <tr><table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>vCPUs</th>
+                    <th>Memory</th>
+                    <th>GPUs</th>
+                    <th>Cost per hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table></tr>
+    </table>
+    <br>
+    <select name="machine_type">
+        {% for machine_type in machine_types %}
+            <option value="{{ machine_type.name }}">{{ machine_type.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button type="submit" name="submit" value="Submit" style="float: inline-end;">Submit</button>
+</body>
+</html>
