@@ -10,7 +10,7 @@ machine_configurations = [
         "vcpus": 1,
         "memory": 3.75,
         "gpus": None,
-        "cost_per_hour": 0.05,
+        "cost_per_hour": 0.07,
         "gpu_type": None,
     },
     {
@@ -18,7 +18,7 @@ machine_configurations = [
         "vcpus": 2,
         "memory": 7.5,
         "gpus": None,
-        "cost_per_hour": 0.10,
+        "cost_per_hour": 0.14,
         "gpu_type": None,
     },
     {
@@ -26,7 +26,7 @@ machine_configurations = [
         "vcpus": 4,
         "memory": 15,
         "gpus": None,
-        "cost_per_hour": 0.20,
+        "cost_per_hour": 0.28,
         "gpu_type": None,
     },
     {
@@ -34,7 +34,7 @@ machine_configurations = [
         "vcpus": 8,
         "memory": 30,
         "gpus": None,
-        "cost_per_hour": 0.40,
+        "cost_per_hour": 0.55,
         "gpu_type": None,
     },
     {
@@ -42,7 +42,7 @@ machine_configurations = [
         "vcpus": 16,
         "memory": 60,
         "gpus": None,
-        "cost_per_hour": 0.80,
+        "cost_per_hour": 1.10,
         "gpu_type": None,
     },
     {
@@ -50,7 +50,23 @@ machine_configurations = [
         "vcpus": 32,
         "memory": 120,
         "gpus": None,
-        "cost_per_hour": 1.60,
+        "cost_per_hour": 2.19,
+        "gpu_type": None,
+    },
+     {
+        "name": "n1-standard-64",
+        "vcpus": 64,
+        "memory": 240,
+        "gpus": None,
+        "cost_per_hour": 4.37,
+        "gpu_type": None,
+    },
+    {
+        "name": "n1-standard-96",
+        "vcpus": 96,
+        "memory": 360,
+        "gpus": None,
+        "cost_per_hour": 6.56,
         "gpu_type": None,
     },
     {
@@ -166,6 +182,38 @@ machine_configurations = [
         "gpu_type": None,
     },
 ]
+gpu_types = [
+    {
+        "name": "NVIDIA Tesla T4",
+        "instance_family": "n1",
+        "max_cost_per_hour": 0.66,
+        "usage": "ML Inference, Training, Remote Visualization Workstations, Video Transcoding",
+    },
+    {
+        "name": "NVIDIA T4",
+        "instance_family": "n1",
+        "max_cost_per_hour": 0.49,
+        "usage": "ML Inference, Training, Remote Visualization Workstations, Video Transcoding",
+    },
+    {
+        "name": "NVIDIA A100",
+        "instance_family": "a2",
+        "max_cost_per_hour": 3.93, 
+        "usage": "Large models with massive data tables for ML Training, Inference, HPC, BERT, DLRM",
+    },
+    {
+        "name": "NVIDIA V100",
+        "instance_family": "n1",
+        "max_cost_per_hour": 2.48,
+        "usage": "ML Training, Inference, HPC",
+    },
+    {
+        "name": "NVIDIA Tesla P100",
+        "instance_family": "n1",
+        "max_cost_per_hour": 1.46,
+        "usage": "ML Training, Inference, HPC, Remote Visualization Workstations",   
+    },
+]
 
 def get_machine_configurations(with_gpus=False):
     if with_gpus:
@@ -181,17 +229,7 @@ def get_machine_configurations(with_gpus=False):
             if machine_configuration["gpus"] is None
         ]
 
-
 @app.route("/")
-# def index():
-#     gpu_rows = []
-#     no_gpu_rows = []
-#     for row in machine_configurations:
-#         if row["gpus"] is not None:
-#             gpu_rows.append([row["name"], row["vcpus"], row["memory"], row["gpus"], row["gpu_type"],row["cost_per_hour"]])
-#         else:
-#             no_gpu_rows.append([row["name"], row["vcpus"], row["memory"], row["gpus"], row["gpu_type"],row["cost_per_hour"]])
-#     return render_template("index.html", gpu_rows=gpu_rows, no_gpu_rows=no_gpu_rows, submit_button_text="Submit", machine_types=machine_configurations)
 def index():
     gpu_rows = []
     no_gpu_rows = []

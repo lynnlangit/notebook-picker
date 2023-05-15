@@ -4,27 +4,25 @@
     <title>Selected Machine Configuration</title>
 </head>
 <body>
-    <h1>Selected Machine Configuration</h1>
+    <h1>{{ machine_configuration.name }}</h1>
     <table>
-        <tbody>
+        <thead>
             <tr>
                 <th>Name</th>
-                <td>{{ machine_configuration.name }}</td>
-            </tr>
-            <tr>
                 <th>vCPUs</th>
-                <td>{{ machine_configuration.vcpus }}</td>
-            </tr>
-            <tr>
                 <th>Memory</th>
-                <td>{{ machine_configuration.memory }}</td>
-            </tr>
-            <tr>
                 <th>GPUs</th>
-                <td>{{ machine_configuration.gpus }}</td>
-            </tr>
-            <tr>
+                <th>GPU Type</th>
                 <th>Cost per hour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ machine_configuration.name }}</td>
+                <td>{{ machine_configuration.vcpus }}</td>
+                <td>{{ machine_configuration.memory }}</td>
+                <td>{{ machine_configuration.gpus }}</td>
+                <td>{{ machine_configuration.gpu_type }}</td>
                 <td>{{ machine_configuration.cost_per_hour }}</td>
             </tr>
         </tbody>
