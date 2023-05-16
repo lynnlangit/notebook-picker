@@ -3,6 +3,7 @@ import sys
 from flask import Flask, render_template, request
 
 app = Flask(__name__, template_folder="templates")
+app.config['STATIC_FOLDER'] = os.path.join(os.getcwd(), 'static')
 
 machine_configurations = [
     {
