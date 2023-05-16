@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GCP Machine Configurations</title>
+    <title>Vertex AI Configs</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Vertex AI Managed Notebooks Configurations</h1>
-    There are a number of configuration options for GCP VertexAI Managed Notebooks.  They include the following:
+    <h1>GCP Managed Notebooks Configurations</h1>
+    There are a number of configuration options for GCP Vertex AI Managed Notebooks.  They include the following:
     <ul>
-        <li>Machine Type (number of vCPUs and amount of memory)</li>
-        <li>GPU Type</li>
-        <li>GPU Count</li>
-        <li>Disk Size</li>
-        <li>Disk Type</li>
-        <li>Region</li>
+        <li><b>Machine Type:</b> number of vCPUs and amount of memory</li>
+        <li><b>GPU Type:</b> not required, but often used in ML workloads</li>
+        <li><b>GPU Count:</b> options are from 1 to 8 GPUs, varies by GPU type</li>
+        <li><b>Disk Size:</b> significant impact on cost</li>
+        <li><b>Disk Type:</b> SSD or HDD</li>
+        <li><b>Region:</b> impacts cost</li> 
       </ul>
-    <br/>
+    <hr>
+    Shown below are three tables which list more information about key aspects of configuration.  They include the following:
+    <ul>
+        <li>the available GPU types for Vertex AI Managed Notebooks</li>
+        <li>example machine configurations with GPUs</li>
+        <li>example machine configurations without GPUs or base configurations</li>
+    </ul>
+
     <table>
         <tr><table>
             <tr><h2>GPU Types</h2></tr>
