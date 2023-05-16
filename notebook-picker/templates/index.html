@@ -31,6 +31,31 @@
 <body>
     <h1>VertexAI Managed Notebooks</h1>
     <table>
+        <tr><table>
+            <tr><h2>GPU Types</h2></tr>
+            <tr><table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Instance Family</th>
+                  <th>Max Cost per Hour</th>
+                  <th>Max Number of gpus</th>
+                  <th>Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for gpu_type in gpu_types %}
+                  <tr>
+                    <td>{{ gpu_type.name }}</td>
+                    <td>{{ gpu_type.instance_family }}</td>
+                    <td>{{ gpu_type.max_cost_per_hour }}</td>
+                    <td>{{ gpu_type.max_number_of_gpus }}</td>
+                    <td>{{ gpu_type.usage }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table></tr>
+    </table></tr>
         <tr><h2>GPU Machine Configurations</h2></tr>
         <tr><table class="table">
             <thead>
@@ -81,6 +106,7 @@
                 {% endfor %}
             </tbody>
         </table></tr>
+       
     </table>
         <br>
         <select name="machine_type" id="machine_type">

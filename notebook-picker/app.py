@@ -184,33 +184,38 @@ machine_configurations = [
 ]
 gpu_types = [
     {
-        "name": "NVIDIA Tesla T4",
+        "name": "NVIDIA Tesla P4",
         "instance_family": "n1",
         "max_cost_per_hour": 0.66,
+        "max_number_of_gpus": 4,
         "usage": "ML Inference, Training, Remote Visualization Workstations, Video Transcoding",
     },
     {
         "name": "NVIDIA T4",
         "instance_family": "n1",
         "max_cost_per_hour": 0.49,
+        "max_number_of_gpus": 4,
         "usage": "ML Inference, Training, Remote Visualization Workstations, Video Transcoding",
     },
     {
         "name": "NVIDIA A100",
         "instance_family": "a2",
         "max_cost_per_hour": 3.93, 
+        "max_number_of_gpus": 8,
         "usage": "Large models with massive data tables for ML Training, Inference, HPC, BERT, DLRM",
     },
     {
         "name": "NVIDIA V100",
         "instance_family": "n1",
         "max_cost_per_hour": 2.48,
+        "max_number_of_gpus": 8,
         "usage": "ML Training, Inference, HPC",
     },
     {
         "name": "NVIDIA Tesla P100",
         "instance_family": "n1",
         "max_cost_per_hour": 1.46,
+        "max_number_of_gpus": 8,
         "usage": "ML Training, Inference, HPC, Remote Visualization Workstations",   
     },
 ]
@@ -239,7 +244,7 @@ def index():
         else:
             no_gpu_rows.append([row["name"], row["vcpus"], row["memory"], row["gpus"], row["gpu_type"],row["cost_per_hour"]])
     selected_row = machine_configurations[0]
-    return render_template("index.html", gpu_rows=gpu_rows, no_gpu_rows=no_gpu_rows, submit_button_text="Submit", machine_types=machine_configurations, selected_row=selected_row)
+    return render_template("index.html", gpu_types=gpu_types,gpu_rows=gpu_rows, no_gpu_rows=no_gpu_rows, submit_button_text="Submit", machine_types=machine_configurations, selected_row=selected_row)
 
 @app.route("/select", methods=["POST"])
 def select():
