@@ -255,7 +255,7 @@ def select():
         if machine_configuration["name"] == machine_configuration_name:
             break
 
-    return render_template("selected.html", machine_configuration=machine_configuration)
+    return render_template("selected.html", machine_configuration=machine_configuration, submit_button_text="Submit")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)

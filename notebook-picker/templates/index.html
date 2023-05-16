@@ -116,15 +116,15 @@
             </script>
         </select>
         <br>
-        <button type="submit" name="submit" value="Submit" style="float: inline-end;">Submit</button>
-        <br>
-    <div id="selection_row">
+        <button id="submit" onclick="submit()">Submit</button>
         <script>
             function submit() {
-              var machineType = document.getElementById("machine_type").value;
-              var selectedRow = machineConfigurations.find(row => row.name === machineType);
-              document.getElementById("selection_row").innerHTML = `
-        <h2>Selected Row</h2>
+                var e = document.getElementById("machine_type");
+                var machine_type = e.options[e.selectedIndex].value;
+                window.location.href = "/select/" + machine_type;
+            }</script>
+    <div id="selection_row">
+        <h3>My Managed Notebook Config</h3>
         <table>
             <thead>
                 <tr>
@@ -147,9 +147,7 @@
                 </tr>
             </tbody>
         </table>
-        `;
-        }
-        </script>
+       
     </div>
 </body>
 </html>
