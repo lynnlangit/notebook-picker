@@ -123,7 +123,10 @@
             function submit() {
                 var e = document.getElementById("machine_type");
                 var machine_type = e.options[e.selectedIndex].value;
-                window.location.href = "/select/" + machine_type;
+                //update the grid with the machine configuration data for the selected machine type
+                //window.location.href = "index.html?machine_type=" + machine_type;
+                window.location.href = "selected.html?machine_type=" + machine_type;
+
             }</script>
     <div id="selection_row">
         <h3>My Managed Notebook Config</h3>
