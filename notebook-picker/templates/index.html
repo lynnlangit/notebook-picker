@@ -3,37 +3,45 @@
 <head>
     <title>Vertex AI Configs</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <h1>GCP Managed Notebooks Configurations</h1>
-    There are a number of configuration options for GCP Vertex AI Managed Notebooks.  They include the following:
+    <h1>GCP Managed Notebooks Configs</h1>
+    There are a number of key configuration options for GCP Vertex AI Managed Notebooks.  They include the following:
     <ul>
-        <li><b>Machine Type:</b> number of vCPUs and amount of memory</li>
-        <li><b>GPU Type:</b> not required, but often used in ML workloads</li>
-        <li><b>GPU Count:</b> options are from 1 to 8 GPUs, varies by GPU type</li>
-        <li><b>Disk Size:</b> significant impact on cost</li>
-        <li><b>Disk Type:</b> SSD or HDD</li>
-        <li><b>Region:</b> impacts cost</li> 
+        <li><i class="material-icons">computer</i>
+            <b>Machine Type:</b> number of vCPUs and amount of memory</li>
+        <li><i class="material-icons">speed</i>
+            <b>GPU Type:</b> not required, but often used in ML workloads</li>
+        <li><i class="material-icons">money</i>
+            <b>GPU Count:</b> options are from 1 to 8 GPUs, varies by GPU type</li>
+        <li><i class="material-icons">storage</i>
+            <b>Disk Size:</b> see limits per instance type</li>
+        <li><i class="material-icons">money</i>
+            <b>Disk Type:</b> SSD or HDD, see limits per instance type</li>
+        <li><i class="material-icons">map</i>
+            <b>Region:</b> for performance and also compliance requirements</li> 
       </ul>
     <hr>
-    Shown below are three tables which list more information about key aspects of configuration.  They include the following:
-    <ul>
-        <li>the available GPU types for Vertex AI Managed Notebooks</li>
-        <li>example machine configurations with GPUs</li>
-        <li>example machine configurations without GPUs or base configurations</li>
-    </ul>
+
+    <h2>About Notebook Configuration</h2>
+
+    Shown below are three tables which list more information about important aspects of notebook configuration.  Tables are shown for:
+    the available GPU types for Vertex AI Managed Notebooks. The second table shows example machine configurations with GPUs, note that a2 instances require GPUs.
+    The third table shows example machine configurations without GPUs.  The fourth table shows the base machine configurations for each instance type.
+    NOTE: number of GPUs <b>significatly increases cost</b>. You can use 1 to 4 (or sometimes 8 GPUs) is possible per notebook.
 
     <table>
         <tr><table>
-            <tr><h2>GPU Types</h2></tr>
+            <tr><h3>GPU Types</h3></tr>
             <tr><table class="table">
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>GPU Name</th>
                   <th>Instance Family</th>
                   <th>Max # of GPUs</th>
                   <th>Usage</th>
-                  <th>Max Cost/Hr</th>
+                  <th>Max Cost/Hr per GPU</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,11 +57,11 @@
               </tbody>
             </table></tr>
     </table></tr>
-        <tr><h2>Example GPU Machine Configurations</h2></tr>
+        <tr><h3>Example GPU Machine Configurations</h3></tr>
         <tr><table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Instance Name</th>
                     <th>vCPUs</th>
                     <th>Memory</th>
                     <th>GPUs</th>
@@ -74,11 +82,11 @@
                 {% endfor %}
             </tbody>
             </table></tr>
-        <tr><h2>Base Machine Configurations</h2></tr>
+        <tr><h3>Base Machine Configurations</h3></tr>
         <tr><table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Instance Name</th>
                     <th>vCPUs</th>
                     <th>Memory</th>
                     <th>Cost/hr</th>
@@ -97,7 +105,8 @@
         </table></tr>
        
     </table>
-        <br>
+    <hr>
+    <h2>My Machine Type Selection</h2>
         <select name="machine_type" id="machine_type">
             {% for machine_type in machine_types %}
                 <option value="{{ machine_type.name }}">{{ machine_type.name }}</option>
@@ -119,7 +128,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Instance Name</th>
                     <th>vCPUs</th>
                     <th>Memory</th>
                     <th>GPUs</th>
