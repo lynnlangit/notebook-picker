@@ -19,6 +19,18 @@
         td {
             padding: 5px;
         }
+        td:nth-child(2) {
+            text-align: center;
+        }
+        td:nth-child(3) {
+            text-align: center;
+        }
+        td:nth-child(4) {
+            text-align: center;
+        }
+        td:nth-child(5) {
+            text-align: right;
+        }
         td:nth-child(6) {
             text-align: right;
         }
@@ -29,7 +41,17 @@
     </style>
 </head>
 <body>
-    <h1>VertexAI Managed Notebooks</h1>
+    <h1>Vertex AI Managed Notebooks Configurations</h1>
+    There are a number of configuration options for GCP VertexAI Managed Notebooks.  They include the following:
+    <ul>
+        <li>Machine Type (number of vCPUs and amount of memory)</li>
+        <li>GPU Type</li>
+        <li>GPU Count</li>
+        <li>Disk Size</li>
+        <li>Disk Type</li>
+        <li>Region</li>
+      </ul>
+    <br/>
     <table>
         <tr><table>
             <tr><h2>GPU Types</h2></tr>
@@ -38,9 +60,9 @@
                 <tr>
                   <th>Name</th>
                   <th>Instance Family</th>
-                  <th>Max Cost per Hour</th>
-                  <th>Max Number of gpus</th>
+                  <th>Max # of GPUs</th>
                   <th>Usage</th>
+                  <th>Max Cost/Hr</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,15 +70,15 @@
                   <tr>
                     <td>{{ gpu_type.name }}</td>
                     <td>{{ gpu_type.instance_family }}</td>
-                    <td>{{ gpu_type.max_cost_per_hour }}</td>
                     <td>{{ gpu_type.max_number_of_gpus }}</td>
                     <td>{{ gpu_type.usage }}</td>
+                    <td>$ {{ gpu_type.max_cost_per_hour }}</td>
                   </tr>
                 {% endfor %}
               </tbody>
             </table></tr>
     </table></tr>
-        <tr><h2>GPU Machine Configurations</h2></tr>
+        <tr><h2>Example GPU Machine Configurations</h2></tr>
         <tr><table class="table">
             <thead>
                 <tr>
@@ -65,7 +87,7 @@
                     <th>Memory</th>
                     <th>GPUs</th>
                     <th>GPU Type</th>
-                    <th>Cost per hour</th>
+                    <th>Cost/hr</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,21 +98,19 @@
                         <td>{{ row[2] }}</td>
                         <td>{{ row[3] }}</td>
                         <td>{{ row[4] }}</td>
-                        <td>{{ row[5] }}</td>
+                        <td>$ {{ row[5] }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
             </table></tr>
-        <tr><h2>Machine Configurations</h2></tr>
+        <tr><h2>Base Machine Configurations</h2></tr>
         <tr><table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>vCPUs</th>
                     <th>Memory</th>
-                    <th>GPUs</th>
-                    <th>GPU Type</th>
-                    <th>Cost per hour</th>
+                    <th>Cost/hr</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,9 +119,7 @@
                         <td>{{ row[0] }}</td>
                         <td>{{ row[1] }}</td>
                         <td>{{ row[2] }}</td>
-                        <td>{{ row[3] }}</td>
-                        <td>{{ row[4] }}</td>
-                        <td>{{ row[5] }}</td>
+                        <td>$ {{ row[5] }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
