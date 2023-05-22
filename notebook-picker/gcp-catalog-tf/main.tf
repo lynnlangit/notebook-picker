@@ -12,12 +12,10 @@ terraform {
     project_id = "genomics-compute"
     location = "us-central1"
 
-    # Import variables from machine_types.tf
-    import_variables "machine_types"
-
+    import_variables = ["machine_types.tf", "gcp_types.tf"]
     machine_type = var.machine_types[var.machine_type]
-    accelerator_type = var.gpu_types[var.accelerator_type]
-    accelerator_count = var.accelerator_count
+    gpu_type = var.gpu_types[var.gpu_type]
+    gpu_count = var.gpu_count
 
   }
 
@@ -25,8 +23,8 @@ terraform {
     notebook_instance {
       name = "my-notebook-instance"
       machine_type = var.machine_type
-      accelerator_type = var.accelerator_type
-      accelerator_count = var.accelerator_count
+      gpu_type = var.gpu_type
+      gpu_count = var.gpu_count
     }
 
     machine_type_dropdown {
@@ -34,8 +32,8 @@ terraform {
       options = var.machine_types
     }
 
-    accelerator_type_dropdown {
-      name = "accelerator_type_dropdown"
+    gpu_type_dropdown {
+      name = "gpu_type_dropdown"
       options = var.gpu_types
     }
   }
@@ -43,7 +41,7 @@ terraform {
   outputs {
     notebook_instance_name = notebook_instance.name
     machine_type_dropdown_name = machine_type_dropdown.name
-    accelerator_type_dropdown_name = accelerator_type_dropdown.name
+    gpu_type_dropdown_name = gpu_type_dropdown.name
   }
 }
 
