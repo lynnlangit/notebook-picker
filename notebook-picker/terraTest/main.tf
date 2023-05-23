@@ -8,8 +8,10 @@ terraform {
 }
 
 provider "google" {
-  # locally use 'gcloud auth application-default login' to authenticate  
-  # credentials = file("<NAME>.json")
+    
+  # testing locally 
+  # use 'gcloud auth application-default login' to authenticate  
+  # with your user credentials
 
   project = var.project
   region  = var.region
