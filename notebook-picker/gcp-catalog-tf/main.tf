@@ -5,18 +5,13 @@ terraform {
 }
 
 provider google {
-  project = var.project_id
-  region = var.location
-}
+  
+  # locally use 'gcloud auth application-default login' to authenticate  
+  # credentials = file("<NAME>.json")
 
-variable "project_id" {
-  type = string
-  default = "genomics-compute"
-}
-
-variable "location" {
-  type = string
-  default = "us-central1"
+  project = var.project
+  region  = var.region
+  zone    = var.zone
 }
 
 variable "machine_types" {
