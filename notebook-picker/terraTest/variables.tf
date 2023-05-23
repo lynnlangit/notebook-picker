@@ -23,7 +23,7 @@ variable "machine_type" {
   default     = "n1-standard-1"
 
   validation {
-    # validate that the machine_type is one of the allowed values from the list of machine_types
+    # validate that the machine_type is one of the allowed values for this application
     condition     = contains([
         "n1-standard-1", 
         "n1-standard-2", 
